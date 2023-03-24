@@ -1,0 +1,98 @@
+<table class="info">
+  <tbody id="tbody">
+    <tr class="titles">
+      <th class="task">
+        <span
+          (click)="changeSort(changeAsc, 'firstName', fName)"
+          (click)="deleteText(lName, num)"
+          >First name</span
+        >
+        <span #fName></span>
+      </th>
+      <th class="check">
+        <span
+          (click)="changeSort(changeAsc, 'lastName', lName)"
+          (click)="deleteText(fName, num)"
+          >Last name</span
+        >
+        <span #lName></span>
+      </th>
+      <th class="status">
+        <span
+          (click)="changeSort(changeAsc, 'number', num)"
+          (click)="deleteText(fName, lName)"
+          >Number</span
+        >
+        <span #num></span>
+      </th>
+      <th class="edit-th">edit</th>
+      <th class="delete-th">delete</th>
+    </tr>
+    <ng-container *ngIf="phoneBookArr.length > 0">
+      <tr
+        *ngFor="
+          let obj of phoneBookArr
+            | search : fieldValue
+            | sort : type : colonValue;
+          index as i
+        "
+        class="tasks"
+      >
+        <td class="task">{{ obj.firstName }}</td>
+        <td>{{ obj.lastName }}</td>
+        <td>{{ "0" + obj.number }}</td>
+        <td><button class="edit" (click)="editTask(i)">Edit</button></td>
+        <td>
+          <button class="delete" (click)="deleteTask(i)">Delete</button>
+        </td>
+      </tr>
+      <ng-container *ngIf="editStatus">
+        <tr class="edit-tasks">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="edit-input_td">
+            <input type="text" class="edit-input" />
+          </td>
+          <td>
+            <input type="button" value="save" class="save" />
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+  </tbody>
+</table>
+
+<!-- modal -->
+<ng-container *ngIf="isOpenModal">
+  <div class="modal-wrapper">
+    <div class="modal-container">
+      <header class="modal-top">
+        <h1 class="modal-add__title">Add phone</h1>
+        <p class="modal-close__top" (click)="closeModal()">&#10006;</p>
+      </header>
+      <hr />
+      <section class="modal-inputs">
+        <input
+          type="text"
+          placeholder="first name goes here"
+          [(ngModel)]="newFirstName"
+        />
+        <input
+          type="text"
+          placeholder="second name goes here"
+          [(ngModel)]="newSecondName"
+        />
+        <input
+          type="text"
+          placeholder="number phone goes here"
+          [(ngModel)]="newNumber"
+        />
+      </section>
+      <hr class="modal-bottom__line" />
+      <button (click)="saveEditTask()" (click)="closeModal()" class="modal-btn">
+        Save
+      </button>
+    </div>
+  </div>
+</ng-container>

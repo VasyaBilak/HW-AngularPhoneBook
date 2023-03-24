@@ -4,52 +4,76 @@
   box-sizing: border-box;
 }
 
-.wrapper {
-  background-color: lightgray;
-  height: 100vh;
-  margin: -8px;
+.info {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
 }
 
-.content {
-  width: 90%;
-  margin: 8px auto;
+.titles {
+  border-bottom: 1px solid gray;
 }
 
-.content > * {
-  margin-top: 10px;
+.titles th {
+  padding: 10px;
+  text-align: left;
 }
 
-.content > h1 {
-  margin-top: 0;
-  color: crimson;
-}
-
-.inp-task {
-  width: 75%;
-  height: 35px;
-  border-radius: 5px;
-  border: 1px solid gray;
-  padding-left: 5px;
-}
-
-.inp-task:focus {
-  outline: 1px solid rgb(34, 160, 218);
-}
-
-.btn-add {
-  width: 23%;
-  margin-left: 2%;
-  height: 35px;
-  border-radius: 5px;
-  border: none;
-  color: white;
-  background-color: rgb(4, 157, 4);
-  font-size: 18px;
+.titles th > span {
   cursor: pointer;
 }
 
-.btn-add:hover {
-  background-color: rgba(4, 157, 4, 0.792);
+tr {
+  border-top: 1px solid gray;
+}
+
+td {
+  padding: 10px;
+}
+
+.tasks:hover {
+  background-color: darkgray;
+}
+
+.edit,
+.delete {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit {
+  background-color: orange;
+}
+
+.edit:hover {
+  background-color: rgb(234, 154, 6);
+}
+
+.delete {
+  background-color: crimson;
+  color: white;
+}
+
+.delete:hover {
+  background-color: rgb(203, 18, 55);
+}
+
+.delete:disabled {
+  background-color: rgba(220, 20, 60, 0.599);
+}
+
+.green {
+  color: green;
+  display: block;
+  padding: 10px;
+}
+
+.red {
+  color: red;
+  display: block;
+  padding: 10px;
 }
 
 // modal
